@@ -1,4 +1,4 @@
-FROM alpine:3.5
+FROM alpine:latest
 ENV CONFIG_JSON=none
 RUN apk add --no-cache --virtual .build-deps ca-certificates curl \
  && curl -L -H "Cache-Control: no-cache" -o /v2ray.zip https://github.com/v2fly/v2ray-core/releases/latest/download/v2ray-linux-64.zip \
@@ -11,4 +11,4 @@ RUN apk add --no-cache --virtual .build-deps ca-certificates curl \
 ADD configure.sh /configure.sh
 RUN chmod +x /configure.sh
 ENTRYPOINT ["sh", "/configure.sh"]
-EXPOSE 8080
+EXPOSE 8080 22
